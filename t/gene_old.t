@@ -68,7 +68,13 @@ is $obj2->get_name(),       'Aging',        'Name unchanged';
 is $obj2->get_organism(),   'Homo sapiens', 'Can get organism';
 is $obj2->get_chromosome(), '22q',          'Can get chromosome';
 is $obj2->get_pdbref(),     'pdf9876.ref',  'Can get pdbref';
-is $obj2->citation(),       'February 9, 1952', 'Can get the citation';
+
+is [$obj2->citation()], [ 'D. Enay', 'February 9, 1952'], 'Can get the citation';
+is [$obj2->citation()], array {
+    item 'D. Enay';
+    item 'February 9, 1952';
+    end();
+}, 'Can get the citation - uses Test2 array{}';
 
 is( Gene->get_count(), 2, 'Two objects created' );
 
