@@ -55,3 +55,6 @@ There's a little more html than with CGI.pm, but the more complex elements are h
 [Tag Helpers](https://docs.mojolicious.org/Mojolicious/Plugin/TagHelpers)
 
 
+## HTML5 - the Web has moved on in 20 years
+
+Some tags like `<font>` have been replaced by CSS attributes.
