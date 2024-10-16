@@ -72,7 +72,7 @@ __DATA__
 Your requested enzyme(s): <i>$requested_enzyme</i>
 <p>
 <code><pre>
-  %  my ($paramenzyme) = $enzyme =~ s/,/ /gr;
+  %  my ($paramenzyme) = $requested_enzyme =~ s/,/ /gr;
   %  foreach my $enzyme (split q{ }, $paramenzyme) {
         Locations for $enzyme:
   %=    join(' ', $restrict->get_enzyme_map($enzyme));
