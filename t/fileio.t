@@ -1,11 +1,12 @@
 use Test2::V0 '!meta';
 
+use File::Copy;
 use FileIO; # from Chapter 4, Sequence Formats and Inheritance
 
 ok my $obj = FileIO->new(), 'Can create a FileIO object';
 
 my $filename = 't/fixtures/file1.txt';
-my $filedate = 'Thu Sep 19 16:41:03 2024'; # creation time on file1.txt
+my $filedate = 'Tue Mar  4 11:55:08 2025'; # creation time on file1.txt
 ok $obj->read( filename => $filename), 'Can read a file';
 
 is $obj->get_filename, $filename, 'Can get file name';
@@ -42,3 +43,12 @@ is $file2->get_filename, $filename2, 'Can get new file name';
 is [$file2->get_filedata], [(@newdata) x2], 'Gets new contents of the file';
 
 done_testing();
+
+# clean up test fixtures
+END {
+    copy "$filename.orig", $filename or warn "Problem cleaning up $filename: $!\n";
+    # touch only works in unix environments, test needs to match $filedate
+    `touch -t 2503041155.08 $filename`;
+
+    unlink $filename2 if -e $filename2; # clean up generated file
+}
