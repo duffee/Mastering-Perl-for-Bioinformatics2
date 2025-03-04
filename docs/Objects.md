@@ -23,15 +23,6 @@ you end up having to do a bit more work validating attributes ... or use Type::T
 An excelent introduction to Moose is
 [Modern Perl, 4e](http://modernperlbooks.com/books/modern_perl_2016/index.html)
 
-## Roles are the new Inheritance
-
-There are "issues" with Inheritance. If you inherit from 2 modules that provide
-the same method name with different behaviours, which one will your class use?
-Roles get around that by specifying the particular behaviour that you want.
-For instance, a Penguin uses the Bird class as a base, but implements the Swimming role
-instead of the Flying role, whereas a FlyingFish implements both roles
-and an Ostrich implements neither.
-
 ## I bet it takes a long time to write
 
 The Gene.pm file took 10 minutes to create all the attributes and the citation method,
