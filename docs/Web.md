@@ -54,7 +54,17 @@ There's a little more html than with CGI.pm, but the more complex elements are h
 [Default Helpers](https://docs.mojolicious.org/Mojolicious/Plugin/DefaultHelpers) and
 [Tag Helpers](https://docs.mojolicious.org/Mojolicious/Plugin/TagHelpers)
 
+### To use html or tag helpers?
+
+Personal preference really, decide which make your code more readable. See
+```
+%= tag hr
+or
+<hr>
+```
 
 ## HTML5 - the Web has moved on in 20 years
 
 Some tags like `<font>` have been replaced by CSS attributes.
+Using `<p>` and `<&nbsp;>` are somewhat frowned upon for creating vertical and horizontal space.
+Excessive use should be avoided.
