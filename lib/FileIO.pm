@@ -32,6 +32,37 @@ sub _all_attributes {
 
 # skip the class data _count because it's not used by the class
 # and why do we want to know how many files are in use? See Gene.pm if you want it.
+# I found count being used in a SeqFileIO test
+# is it there to demonstrate a DESTROY application?
+#
+# after finding it used in SeqFileIO, let's implement it to show off
+# the BUILD DEMOLISH methods
+
+# Global variable to keep count of existing objects
+my $_count = 0;
+
+# Manage the count of existing objects
+sub get_count {
+    return $_count;
+}
+sub _incr_count {
+    ++$_count;
+}
+sub _decr_count {
+    --$_count;
+}
+
+sub BUILD {
+    my ($self) = @_;
+
+    $self->_incr_count();
+}
+
+sub DEMOLISH {
+    my ($self) = @_;
+
+    $self->_decr_count();
+}
 
 # Called from object, e.g. $obj->read();
 sub read {
@@ -58,7 +89,8 @@ sub write {
     for my $attribute ( $self->_all_attributes ) {
         if ($arg{$attribute}) {
             my $method = join '_', 'set', $attribute;
-            $self->$method( $arg{$attribute} );
+            $self->$method( $arg{$attribute} )
+                if $self->can( $method ); # make sure class has this method
         }
     }
     croak "No filename attribute as required" unless $self->get_filename;
