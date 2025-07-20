@@ -2,6 +2,9 @@ package DrawGraphics;
 
 use Moose::Role;
 
+# Role expects class which implements this role to have these methods
+requires ('graphictype', '_drawmap_text');
+
 #
 # A Role that takes locations of restriction enzyme recognition sites in
 # DNA sequence data and displays them.
