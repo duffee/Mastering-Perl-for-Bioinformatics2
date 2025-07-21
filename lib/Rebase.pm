@@ -132,11 +132,13 @@ sub parse_rebase {
             # Omit already defined sites
             if (exists $defined_sites{$site}) {
                 next;
-                # Omit reverse complements of already defined sites
-            } elsif (exists $defined_sites{ revcomIUB($site) }) {
+            }
+            # Omit reverse complements of already defined sites
+            elsif (exists $defined_sites{ revcomIUB($site) }) {
                 next;
-                # Add the additional site
-            } else {
+            }
+            # Add the additional site
+            else {
                 $self->rebase->{$name} .= " $site " . IUB_to_regexp($site);
             }
         }
