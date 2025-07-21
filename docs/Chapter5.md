@@ -32,6 +32,9 @@ done in record time.
 Add another 5 minutes for changing get_dbmfile to dbmfile in test
 and changing $self->rebase{$enzyme} to $self->rebase->{$enzyme} in module.
 (changed documentation while I was there, too)
+These changes were necessary because the old module used a bespoke accessor,
+get_dbmfile, to get the dbmfile attribute. This is down to your preference
+whether to name accessors/mutators with get/set or not.
 
 ## Migrating to Moo
 
