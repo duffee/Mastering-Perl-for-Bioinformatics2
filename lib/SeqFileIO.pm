@@ -180,14 +180,13 @@ sub _set_attributes {
             }
             $self->{$attribute} = $arg{$argument};
 
-            # If not given, but required
         }
         elsif ($self->_permissions($attribute, 'required')) {
+            # If not given, but required
             croak("No $argument attribute as required");
-
-            # Set to the default
         }
         else {
+            # Set to the default
             $self->{$attribute} = $self->_attribute_default($attribute);
         }
     }
@@ -230,7 +229,7 @@ sub is_fasta {
         elsif (/^>/ && $flag == 0) {
             $flag = 1;
         }
-        elsif ((!/^>/) && $flag == 0) {    #first line must start with ">"
+        elsif ((!/^>/) && $flag == 0) {    # first line must start with ">"
             last;
         }
     }
@@ -533,7 +532,7 @@ sub parse_embl {
         elsif ($seq == 1) {
             $sequence .= $_;
         }
-        elsif (/^AC\s*(.*(;|\S)).*/) {    #put this here - AC could be sequence
+        elsif (/^AC\s*(.*(;|\S)).*/) {    # put this here - AC could be sequence
             $acc .= $1;
         }
         if ($begin == 1 && $seq == 1 && $end == 1) {
