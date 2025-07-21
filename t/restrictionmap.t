@@ -26,6 +26,7 @@ is [$restrict->get_enzyme_map($enzyme)], [3, 11], "Got locations for $enzyme";
 ok my $graphic = $restrict->get_graphic, 'Can get_graphic';
 is [$graphic =~ /$enzyme/g], [($enzyme) x2], "Graphic shows $enzyme"
 or diag $graphic;
+is $graphic, "  EcoRI   EcoRI  \nACGAATTCCGGAATTCG\n\n", 'Literal graphic';
 
 
 ## Some bigger sequence
@@ -38,7 +39,7 @@ ok $biggerseq->read(filename => $file_fasta), 'Read from map.fasta';
 my $restrict2 = Restrictionmap->new(
     rebase => $rebase,
     enzyme => 'EcoRI HindIII',  # GAATTC # AAGCTT
-    sequence => $biggerseq->get_sequence,
+    sequence => $biggerseq->sequence,
     graphictype => 'text',
 );
 
