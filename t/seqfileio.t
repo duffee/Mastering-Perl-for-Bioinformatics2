@@ -6,7 +6,7 @@ use SeqFileIO; # from Chapter 4, Sequence Formats and Inheritance
 ok my $obj = SeqFileIO->new(), 'Can create a SeqFileIO object';
 
 my $filename = 't/fixtures/file1.txt';
-my $filedate = 'Thu Sep 19 16:41:03 2024'; # creation time on file1.txt
+my $filedate = 'Tue Mar  4 11:55:08 2025'; # creation time on file1.txt
 ok $obj->read( filename => $filename), 'Can read a file';
 
 is $obj->get_filename, $filename, 'Can get file name';
