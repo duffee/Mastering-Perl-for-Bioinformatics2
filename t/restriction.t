@@ -14,8 +14,11 @@ my $restrict = Restriction->new(
     sequence => $sequence,
 );
 
-is $rebase->{_rebase}{$enzyme}, 'GAATTC GAATTC', "$enzyme data in Rebase";
-is $restrict->get_sequence, $sequence, 'Got sequence';
+#use Data::Dumper::Concise;
+#warn Dumper $restrict->map;
+is $rebase->rebase->{$enzyme}, 'GAATTC GAATTC', "$enzyme data in Rebase";
+# is $restrict->get_sequence, $sequence, 'Got sequence'; # old method
+is $restrict->sequence, $sequence, 'Got sequence';
 is [$restrict->get_enzyme_map($enzyme)], [3, 11], "Got locations for $enzyme";
 
 done_testing();
